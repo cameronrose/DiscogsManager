@@ -4,10 +4,10 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './containers/app';
 import { NotFoundPageComponent } from './containers/not-found-page';
-import { LayoutComponent } from './components/layout';
-import { NavItemComponent } from './components/nav-item';
-import { SidenavComponent } from './components/sidenav';
-import { ToolbarComponent } from './components/toolbar';
+import { LayoutComponent } from './components/layout/layout';
+import { NavItemComponent } from './components/nav-item/nav-item';
+import { SidenavComponent } from './components/sidenav/sidenav';
+import { ToolbarComponent } from './components/toolbar/toolbar';
 import { MaterialModule } from '../material';
 
 import { GoogleBooksService } from './services/google-books';
