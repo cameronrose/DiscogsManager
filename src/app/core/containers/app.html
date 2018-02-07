@@ -1,21 +1,21 @@
-<bc-layout>
-    <bc-sidenav [open]="showSidenav$ | async">
-      <bc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
-        My Collection
-      </bc-nav-item>
-      <bc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/books/find" icon="search" hint="Find your next book!">
-        Browse Books
-      </bc-nav-item>
-      <bc-nav-item (navigate)="closeSidenav()" *ngIf="!(loggedIn$ | async)">
-        Sign In
-      </bc-nav-item>
-      <bc-nav-item (navigate)="logout()" *ngIf="loggedIn$ | async">
-        Sign Out
-      </bc-nav-item>
-    </bc-sidenav>
-    <bc-toolbar (openMenu)="openSidenav()">
-      Book Collection
-    </bc-toolbar>
+<dc-layout>
+  <dc-sidenav [open]="showSidenav$ | async">
+    <!-- <dc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
+      My Collection
+    </dc-nav-item> -->
+    <dc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/releases/find" icon="search" hint="Find your next book!">
+      Search
+    </dc-nav-item>
+    <dc-nav-item (navigate)="closeSidenav()" *ngIf="!(loggedIn$ | async)">
+      Sign In
+    </dc-nav-item>
+    <dc-nav-item (navigate)="logout()" *ngIf="loggedIn$ | async">
+      Sign Out
+    </dc-nav-item>
+  </dc-sidenav>
+  <dc-toolbar (openMenu)="openSidenav()">
+    Search
+  </dc-toolbar>
 
-    <router-outlet></router-outlet>
-  </bc-layout>
+  <router-outlet></router-outlet>
+</dc-layout>

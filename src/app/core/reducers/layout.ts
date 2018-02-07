@@ -25,11 +25,15 @@ export function reducer(
   state: State = initialState,
   action: LayoutActions
 ): State {
-  if (action.type) {
-    actionDict[action.type]();
-  }
+  switch (action.type) {
+    case LayoutActionTypes.CloseSidenav:
+      return { showSidenav: false };
+    case LayoutActionTypes.OpenSidenav:
+      return { showSidenav: true };
 
-  return state;
+    default:
+      return state;
+  }
 }
 
 export const getShowSidenav = (state: State) => state.showSidenav;

@@ -8,7 +8,7 @@ import * as layout from '../actions/layout';
 //import * as Auth from '../../auth/actions/auth';
 
 @Component({
-  selector: 'bc-app',
+  selector: 'dc-app',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.html'
 })
