@@ -8,6 +8,8 @@ import { LayoutComponent } from './components/layout/layout';
 import { NavItemComponent } from './components/nav-item/nav-item';
 import { SidenavComponent } from './components/sidenav/sidenav';
 import { ToolbarComponent } from './components/toolbar/toolbar';
+import { PaginationComponent } from './components/pagination/pagination';
+
 import { MaterialModule } from '../material';
 
 import { DiscogsService } from './services/discogs.service';
@@ -19,6 +21,7 @@ export const COMPONENTS = [
   NavItemComponent,
   SidenavComponent,
   ToolbarComponent,
+  PaginationComponent
 ];
 
 @NgModule({

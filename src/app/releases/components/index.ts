@@ -3,12 +3,16 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import {SearchComponent} from './search/search.component';
+import { SearchComponent } from './search/search.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
+import { SearchResultItemComponent } from './search-result-item/search-result-item.component';
 
 import { MaterialModule } from '../../material';
 
 const COMPONENTS = [
-  SearchComponent
+  SearchComponent,
+  SearchResultsComponent,
+  SearchResultItemComponent
 ];
 
 @NgModule({
