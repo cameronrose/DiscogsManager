@@ -1,5 +1,6 @@
 import { ReleaseActions, ReleaseActionTypes } from '../actions/releases';
 import * as models from '../models';
+import {defaults} from '../../util';
 
 export interface State {
     results: models.SearchResult[];
@@ -11,12 +12,7 @@ export interface State {
 
 const initialState: State = {
     results: [],
-    pagination: {
-        per_page: 10,
-        items: 0,
-        page: 1,
-        pages: 0
-    },
+    pagination: defaults.pagination,
     loading: false,
     error: '',
     query: '',
@@ -25,9 +21,9 @@ const initialState: State = {
 export function reducer(state = initialState, action: ReleaseActions): State {
     switch (action.type) {
         case ReleaseActionTypes.Search: {
-            const query = action.payload;
+            const input = action.payload;
 
-            if (query === '') {
+            if (input.query === '') {
                 return this.initialState;
             }
 
@@ -35,7 +31,7 @@ export function reducer(state = initialState, action: ReleaseActions): State {
                 ...state,
                 loading: true,
                 error: '',
-                query,
+                query: input.query,
             };
         }
 

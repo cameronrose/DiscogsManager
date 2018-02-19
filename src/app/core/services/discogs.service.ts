@@ -9,11 +9,11 @@ export class DiscogsService {
   private API_PATH = 'https://api.discogs.com/';
   private token = 'NrdbzBDFRADMleQMMXQSulkaAAEOROdYNRMHAYsG';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  search(q: string): Observable<models.Search> {
+  search(searchInput: models.SearchInput): Observable<models.Search> {
     return this.http
-      .get<models.Search>(this.API_PATH + '/database/search?q=' + q + '&token=' + this.token)
+      .get<models.Search>(this.API_PATH + '/database/search?q=' + searchInput.query + '&page=' + searchInput.page + '&token=' + this.token)
       .pipe(result => result);
   }
 }

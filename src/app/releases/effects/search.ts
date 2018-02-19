@@ -25,6 +25,8 @@ import {
   catchError,
 } from 'rxjs/operators';
 
+import {defaults} from '../../util';
+
 /**
  * Effects offer a way to isolate and easily test side-effects within your
  * application.
@@ -43,8 +45,8 @@ export class SearchEffects {
     ofType<Search>(ReleaseActionTypes.Search),
     debounceTime(300),
     map(action => action.payload),
-    switchMap(query => {
-      if (query === '') {
+    switchMap(input => {
+      if(input.query.length < 3){
         return empty();
       }
 
@@ -52,9 +54,11 @@ export class SearchEffects {
         ofType(ReleaseActionTypes.Search),
         skip(1)
       );
+      const searchTerm = input.query.trim();
+      const query = encodeURIComponent(searchTerm);
 
       return this.discogsService
-        .search(query)
+        .search(input)
         .pipe(
           takeUntil(nextSearch$),
           map((search: models.Search) => new SearchComplete(search)),

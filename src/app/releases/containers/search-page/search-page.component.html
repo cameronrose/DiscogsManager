@@ -1,3 +1,3 @@
 <dc-search [query]="searchQuery$ | async" (onSearch)="search($event)" [searching]="searching$ | async" [error]="error$ | async"></dc-search>
-<dc-search-results [searchResults]="searchResults$ | async" [pagination]="pagination$ | async"></dc-search-results>
-<!-- <dc-pagination [pagination]="pagination$ | async" (onPageChange)="pageChange($event)"></dc-pagination> -->
+<dc-search-results [searchResults]="searchResults$ | async"></dc-search-results>
+<dc-pagination [pagination]="pagination$ | async" (onPageChange)="pageChange(searchQuery$,$event)"></dc-pagination>

@@ -4,10 +4,10 @@ import { Observable } from 'rxjs/Observable';
 
 import * as fromRoot from '../../reducers';
 
-import {SearchResult, Pagination} from '../../models';
+import { SearchResult, Pagination } from '../../models';
 import * as search from '../../actions/releases';
 
-import {PageEvent} from '@angular/material';
+import { PageEvent } from '@angular/material';
 @Component({
   selector: 'dc-search-page',
   templateUrl: './search-page.component.html',
@@ -19,6 +19,7 @@ export class SearchPageComponent {
   searchResults$: Observable<SearchResult[]>;
   pagination$: Observable<Pagination>;
   error$: Observable<string>;
+  _query: string;
 
   constructor(private store: Store<fromRoot.State>) {
     this.searchQuery$ = store.select(fromRoot.getSearchQuery);
@@ -28,11 +29,12 @@ export class SearchPageComponent {
     this.error$ = store.select(fromRoot.getSearchError);
   }
 
-  search(query: string) {
-    this.store.dispatch(new search.Search(query));
+  search(query: string, pagination: Pagination) {
+    this._query = query;
+    this.store.dispatch(new search.Search({ query: query, page: 1 }));
   }
 
-  // pageChange(page: PageEvent){
-  //   this.store.dispatch(new search.Search());
-  // }
+  pageChange(query: string, page: PageEvent) {
+    this.store.dispatch(new search.Search({ query: this._query, page: page.pageIndex + 1 }));
+  }
 }

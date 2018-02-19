@@ -19,7 +19,7 @@ export enum ReleaseActionTypes {
 export class Search implements Action {
   readonly type = ReleaseActionTypes.Search;
 
-  constructor(public payload: string) {}
+  constructor(public payload: models.SearchInput) {}
 }
 
 export class SearchComplete implements Action {

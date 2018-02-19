@@ -10,6 +10,7 @@ import { SearchEffects } from './effects/search';
 import { SearchPageComponent } from './containers/search-page/search-page.component';
 
 import { MaterialModule } from '../material';
+import { CoreModule } from '../core/core.module';
 
 import { reducers } from './reducers';
 
@@ -25,7 +26,8 @@ import { reducers } from './reducers';
       }
     ]),
     StoreModule.forFeature("releases", reducers),
-    EffectsModule.forFeature([SearchEffects])
+    EffectsModule.forFeature([SearchEffects]),
+    CoreModule
   ],
   declarations: [SearchPageComponent]
 })
