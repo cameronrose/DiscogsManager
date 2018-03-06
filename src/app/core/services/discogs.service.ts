@@ -16,4 +16,9 @@ export class DiscogsService {
       .get<models.Search>(this.API_PATH + '/database/search?q=' + searchInput.query + '&page=' + searchInput.page + '&token=' + this.token)
       .pipe(result => result);
   }
+
+  releaseDetail(id): Observable<models.Release>{
+    return this.http
+      .get<models.Release>(this.API_PATH + '/releases/' + id);
+  }
 }

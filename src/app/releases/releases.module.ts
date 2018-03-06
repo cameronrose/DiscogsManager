@@ -1,18 +1,20 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { RouterModule } from "@angular/router";
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
 
-import { ComponentsModule } from './components';
-import { SearchEffects } from './effects/search';
+import { ComponentsModule } from "./components";
+import { SearchEffects } from "./effects/search";
+import { ReleaseEffects } from "./effects/release";
 
-import { SearchPageComponent } from './containers/search-page/search-page.component';
+import { SearchPageComponent } from "./containers/search-page/search-page.component";
 
-import { MaterialModule } from '../material';
-import { CoreModule } from '../core/core.module';
+import { MaterialModule } from "../material";
+import { CoreModule } from "../core/core.module";
 
-import { reducers } from './reducers';
+import { reducers } from "./reducers";
+import { DetailPageComponent } from "./containers/detail-page/detail-page.component";
 
 @NgModule({
   imports: [
@@ -20,15 +22,20 @@ import { reducers } from './reducers';
     MaterialModule,
     ComponentsModule,
     RouterModule.forChild([
-      {path: 'find', component: SearchPageComponent},
+      { path: "find", component: SearchPageComponent },
       {
-        path: '', component: SearchPageComponent
+        path: "",
+        component: SearchPageComponent
+      },
+      {
+        path: "detail/:id",
+        component: DetailPageComponent
       }
     ]),
     StoreModule.forFeature("releases", reducers),
-    EffectsModule.forFeature([SearchEffects]),
+    EffectsModule.forFeature([SearchEffects, ReleaseEffects]),
     CoreModule
   ],
-  declarations: [SearchPageComponent]
+  declarations: [SearchPageComponent, DetailPageComponent]
 })
-export class ReleasesModule { }
+export class ReleasesModule {}
