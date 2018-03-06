@@ -20,12 +20,14 @@ export class SearchPageComponent {
   pagination$: Observable<Pagination>;
   error$: Observable<string>;
   _query: string;
+  showPagination$: Observable<boolean>;
 
   constructor(private store: Store<fromRoot.State>) {
     this.searchQuery$ = store.select(fromRoot.getSearchQuery);
     this.searchResults$ = store.select(fromRoot.getSearchResults);
     this.searching$ = store.select(fromRoot.getSearchLoading);
     this.pagination$ = store.select(fromRoot.getSearchPagination);
+    this.showPagination$ = store.select(fromRoot.showSearchPagination);
     this.error$ = store.select(fromRoot.getSearchError);
   }
 

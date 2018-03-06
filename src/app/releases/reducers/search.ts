@@ -5,6 +5,7 @@ import {defaults} from '../../util';
 export interface State {
     results: models.SearchResult[];
     pagination: models.Pagination;
+    showPagination: boolean;
     loading: boolean;
     error: string;
     query: string;
@@ -13,6 +14,7 @@ export interface State {
 const initialState: State = {
     results: [],
     pagination: defaults.pagination,
+    showPagination: false,
     loading: false,
     error: '',
     query: '',
@@ -35,10 +37,11 @@ export function reducer(state = initialState, action: ReleaseActions): State {
             };
         }
 
-        case ReleaseActionTypes.SearchComplete: {
+        case ReleaseActionTypes.SearchComplete: {            
             return {
                 results: action.payload.results,
                 pagination: action.payload.pagination,
+                showPagination: action.payload.pagination.pages > 1,
                 loading: false,
                 error: '',
                 query: state.query,
@@ -62,6 +65,8 @@ export function reducer(state = initialState, action: ReleaseActions): State {
 export const getSearchResults = (state: State) => state.results;
 
 export const getPagination = (state: State) => state.pagination;
+
+export const showPagination = (state: State) => state.showPagination;
 
 export const getQuery = (state: State) => state.query;
 

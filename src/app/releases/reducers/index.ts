@@ -62,3 +62,8 @@ export const getSearchPagination = createSelector(
   getSearchState,
   fromSearch.getPagination
 );
+
+export const showSearchPagination = createSelector(
+  getSearchState,
+  fromSearch.showPagination
+)
