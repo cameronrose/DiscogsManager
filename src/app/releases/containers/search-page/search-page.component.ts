@@ -31,7 +31,7 @@ export class SearchPageComponent {
     this.error$ = store.select(fromRoot.getSearchError);
   }
 
-  search(query: string, pagination: Pagination) {
+  search(query: string) {
     this._query = query;
     this.store.dispatch(new search.Search({ query: query, page: 1 }));
   }
