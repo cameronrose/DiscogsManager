@@ -1,5 +1,26 @@
 <div *ngIf="loading">Loading...</div>
-<mat-grid-list *ngIf="release" cols="2" rowHeight="100px">
-  <mat-grid-tile>image</mat-grid-tile>
-  <mat-grid-tile>{{release.title}}</mat-grid-tile>
-</mat-grid-list>
+
+<div class="controls" *ngIf="!loading">
+  <div class="left flex">
+    <button mat-raised-button color="primary">
+      <fa name="plus"></fa>Add to collection</button>
+  </div>
+  <div class="right flex">
+    <a class="back" routerLink="/releases/find">Go back</a>
+  </div>
+</div>
+<div class="release" *ngIf="!loading">
+  <div class="left flex">
+    <h1>{{release.title}}</h1>
+    <h3>TRACKLIST</h3>
+    <mat-list class="tracklist">
+      <mat-list-item *ngFor="let track of release.tracklist">
+        <span class="title">{{track.title}}</span>
+        <span class="duration">{{track.duration}}</span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <div class="right flex">
+    <img src="{{release.thumb}}" />
+  </div>
+</div>

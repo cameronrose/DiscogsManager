@@ -10,6 +10,7 @@ import { SearchResultItemComponent } from './search-result-item/search-result-it
 import {ReleaseComponent} from './release/release.component';
 
 import { MaterialModule } from '../../material';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 const COMPONENTS = [
   SearchComponent,
@@ -23,7 +24,8 @@ const COMPONENTS = [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    AngularFontAwesomeModule
   ],
   declarations: [COMPONENTS],
   exports: [COMPONENTS]

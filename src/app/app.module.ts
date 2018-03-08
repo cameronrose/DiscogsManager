@@ -1,28 +1,32 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { RouterModule } from "@angular/router";
 
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { DBModule } from '@ngrx/db';
+import { StoreModule } from "@ngrx/store";
+import { EffectsModule } from "@ngrx/effects";
+import { DBModule } from "@ngrx/db";
 import {
   StoreRouterConnectingModule,
-  RouterStateSerializer,
-} from '@ngrx/router-store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+  RouterStateSerializer
+} from "@ngrx/router-store";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
-import { CoreModule } from './core/core.module';
+import { CoreModule } from "./core/core.module";
+import { AuthModule } from "./auth/auth.module";
 
-import { routes } from './routes';
-import { reducers, metaReducers } from './reducers';
-import { schema } from './db';
-import { CustomRouterStateSerializer } from './shared/utils';
+import { routes } from "./routes";
+import { reducers, metaReducers } from "./reducers";
+import { schema } from "./db";
+import { CustomRouterStateSerializer } from "./shared/utils";
 
-import { AppComponent } from './core/containers/app';
-import { environment } from '../environments/environment';
+import { AppComponent } from "./core/containers/app";
+import { environment } from "../environments/environment";
+
+//import { OAuthModule } from "angular-oauth2-oidc";
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   imports: [
@@ -30,6 +34,9 @@ import { environment } from '../environments/environment';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    //OAuthModule.forRoot(),
+    AngularFontAwesomeModule,
+    
     RouterModule.forRoot(routes, { useHash: true }),
 
     /**
@@ -49,7 +56,7 @@ import { environment } from '../environments/environment';
         They stateKey defines the name of the state used by the router-store reducer.
         This matches the key defined in the map of reducers
       */
-      stateKey: 'router',
+      stateKey: "router"
     }),
 
     /**
@@ -63,8 +70,8 @@ import { environment } from '../environments/environment';
      * See: https://github.com/zalmoxisus/redux-devtools-extension
      */
     StoreDevtoolsModule.instrument({
-      name: 'Discogs manager with Angular and ngrx',
-      logOnly: environment.production,
+      name: "Discogs manager with Angular and ngrx",
+      logOnly: environment.production
     }),
 
     /**
@@ -83,6 +90,7 @@ import { environment } from '../environments/environment';
     DBModule.provideDB(schema),
 
     CoreModule.forRoot(),
+    AuthModule.forRoot()
   ],
   providers: [
     /**
@@ -90,8 +98,8 @@ import { environment } from '../environments/environment';
      * A custom RouterStateSerializer is used to parse the `RouterStateSnapshot` provided
      * by `@ngrx/router-store` to include only the desired pieces of the snapshot.
      */
-    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
+    { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

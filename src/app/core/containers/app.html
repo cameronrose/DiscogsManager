@@ -1,8 +1,5 @@
 <dc-layout>
   <dc-sidenav [open]="showSidenav$ | async">
-    <!-- <dc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/" icon="book" hint="View your book collection">
-      My Collection
-    </dc-nav-item> -->
     <dc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/releases/find" icon="search" hint="Find your next book!">
       Search
     </dc-nav-item>

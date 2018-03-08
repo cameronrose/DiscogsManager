@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { map } from "rxjs/operators";
 import * as models from "../../releases/models";
@@ -12,20 +12,25 @@ export class DiscogsService {
   constructor(private http: HttpClient) {}
 
   search(searchInput: models.SearchInput): Observable<models.Search> {
-    return this.http
-      .get<models.Search>(
-        this.API_PATH +
-          "/database/search?release_title=" +
-          searchInput.query +
-          "&page=" +
-          searchInput.page +
-          "&type=release&token=" +
-          this.token
-      )
-      .pipe(result => result);
+    return this._getRequest<models.Search>(
+      this.API_PATH +
+        "database/search?release_title=" +
+        searchInput.query +
+        "&page=" +
+        searchInput.page +
+        "&type=release"
+    ).pipe(result => result);
   }
 
   releaseDetail(id): Observable<models.Release> {
-    return this.http.get<models.Release>(this.API_PATH + "/releases/" + id);
+    return this._getRequest<models.Release>(this.API_PATH + "releases/" + id);
+  }
+
+  private _getRequest<T>(url) {
+    return this.http.get<T>(url, {
+      headers: {
+        Authorization: "Discogs token=NrdbzBDFRADMleQMMXQSulkaAAEOROdYNRMHAYsG"
+      }
+    });
   }
 }

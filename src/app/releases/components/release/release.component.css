@@ -1,0 +1,44 @@
+.mat-raised-button {
+  /* position: absolute; */
+  top: 10px;
+}
+
+.release, .controls {
+  display: flex;
+  padding: 0 16px;
+}
+
+.back{
+    top: 10px;
+    align-self: flex-end;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left {
+  flex: 1;
+}
+
+.right {
+  flex: 1;
+}
+.release .right img {
+  display: block;
+  margin: 0 auto;
+}
+
+mat-list.tracklist {
+  width: 80%;
+}
+
+mat-list.tracklist mat-list-item span.title {
+  position: absolute;
+}
+mat-list.tracklist mat-list-item span.duration {
+  position: absolute;
+  right: 0;
+}

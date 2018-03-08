@@ -12,6 +12,7 @@ import { SearchPageComponent } from "./containers/search-page/search-page.compon
 
 import { MaterialModule } from "../material";
 import { CoreModule } from "../core/core.module";
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { reducers } from "./reducers";
 import { DetailPageComponent } from "./containers/detail-page/detail-page.component";
@@ -21,6 +22,8 @@ import { DetailPageComponent } from "./containers/detail-page/detail-page.compon
     CommonModule,
     MaterialModule,
     ComponentsModule,
+    AngularFontAwesomeModule,
+    
     RouterModule.forChild([
       { path: "find", component: SearchPageComponent },
       {

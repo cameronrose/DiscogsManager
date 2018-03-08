@@ -1,22 +1,28 @@
-import { Observable } from 'rxjs/Observable';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Observable } from "rxjs/Observable";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { Store, select } from "@ngrx/store";
 
-import * as fromRoot from '../../reducers';
+import * as fromRoot from "../../reducers";
 //import * as fromAuth from '../../auth/reducers';
-import * as layout from '../actions/layout';
+import * as layout from "../actions/layout";
 //import * as Auth from '../../auth/actions/auth';
+import { OAuthService } from "angular-oauth2-oidc";
+import { JwksValidationHandler } from "angular-oauth2-oidc";
+import { authConfig } from "../../auth.config";
 
 @Component({
-  selector: 'dc-app',
+  selector: "dc-app",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './app.html'
+  templateUrl: "./app.html"
 })
 export class AppComponent {
   showSidenav$: Observable<boolean>;
   loggedIn$: Observable<boolean>;
 
-  constructor(private store: Store<fromRoot.State>) {
+  constructor(
+    private store: Store<fromRoot.State>
+  ) {
+    // this.configureWithNewConfigApi();
     /**
      * Selectors can be applied with the `select` operator which passes the state
      * tree to the provided selector
@@ -24,6 +30,12 @@ export class AppComponent {
     this.showSidenav$ = this.store.pipe(select(fromRoot.getShowSidenav));
     //this.loggedIn$ = this.store.pipe(select(fromAuth.getLoggedIn));
   }
+
+  // private configureWithNewConfigApi() {
+  //   this.oauthService.configure(authConfig);
+  //   this.oauthService.tokenValidationHandler = new JwksValidationHandler();
+  //   this.oauthService.loadDiscoveryDocumentAndTryLogin();
+  // }
 
   closeSidenav() {
     /**

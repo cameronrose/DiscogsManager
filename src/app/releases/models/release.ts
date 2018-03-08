@@ -9,4 +9,5 @@ export interface Release{
     tracklist: Tracklist[];
     year: number;
     released: number;
+    thumb: string;
 }
