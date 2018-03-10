@@ -1,7 +1,10 @@
 <dc-layout>
   <dc-sidenav [open]="showSidenav$ | async">
-    <dc-nav-item (navigate)="closeSidenav()" *ngIf="loggedIn$ | async" routerLink="/releases/find" icon="search" hint="Find your next book!">
+    <dc-nav-item (navigate)="closeSidenav()" routerLink="/releases/find" icon="search">
       Search
+    </dc-nav-item>
+    <dc-nav-item (navigate)="closeSidenav()" routerLink="/releases/collection" icon="folder">
+      Collection
     </dc-nav-item>
     <dc-nav-item (navigate)="closeSidenav()" *ngIf="!(loggedIn$ | async)">
       Sign In
@@ -10,7 +13,7 @@
       Sign Out
     </dc-nav-item>
   </dc-sidenav>
-  <dc-toolbar (openMenu)="openSidenav()">
+  <dc-toolbar (openMenu)="openSidenav()" [loading]="loading$ | async">
     Search
   </dc-toolbar>
 

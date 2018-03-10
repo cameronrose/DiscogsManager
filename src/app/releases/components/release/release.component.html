@@ -2,25 +2,33 @@
 
 <div class="controls" *ngIf="!loading">
   <div class="left flex">
-    <button mat-raised-button color="primary">
-      <fa name="plus"></fa>Add to collection</button>
+    <a class="back" routerLink="/releases/find">Go back</a>
   </div>
   <div class="right flex">
-    <a class="back" routerLink="/releases/find">Go back</a>
+    <button mat-raised-button color="primary">
+      <fa name="plus"></fa>Add to collection</button>
   </div>
 </div>
 <div class="release" *ngIf="!loading">
   <div class="left flex">
-    <h1>{{release.title}}</h1>
-    <h3>TRACKLIST</h3>
-    <mat-list class="tracklist">
-      <mat-list-item *ngFor="let track of release.tracklist">
-        <span class="title">{{track.title}}</span>
-        <span class="duration">{{track.duration}}</span>
-      </mat-list-item>
-    </mat-list>
+    <div class="head">
+      <div class="thumb">
+        <img src="{{release.thumb}}" />
+      </div>
+      <h1>{{release.artists[0].name}} - {{release.title}}</h1>
+    </div>
+    <div class="tracklist">
+      <h3>TRACKLIST</h3>
+      <mat-list class="tracklist">
+        <mat-list-item *ngFor="let track of release.tracklist">
+          <span class="title">{{track.title}}</span>
+          <span class="duration">{{track.duration}}</span>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </div>
   </div>
   <div class="right flex">
-    <img src="{{release.thumb}}" />
+    <!-- <img src="{{release.thumb}}" /> -->
   </div>
 </div>

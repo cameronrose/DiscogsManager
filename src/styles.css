@@ -16,3 +16,7 @@ html {
   width: 30px !important;
   height: 30px !important;
 }
+
+.mat-toolbar .mat-progress-spinner circle, .mat-toolbar .mat-spinner circle{
+  stroke: white;
+}

@@ -8,9 +8,13 @@
   padding: 0 16px;
 }
 
+.head{
+    display: flex;
+    top: 10px;
+}
+
 .back{
     top: 10px;
-    align-self: flex-end;
 }
 
 .flex {

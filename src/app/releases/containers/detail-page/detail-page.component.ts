@@ -6,6 +6,7 @@ import * as fromRoot from "../../reducers";
 
 import { Release } from "../../models";
 import * as search from "../../actions/releases";
+import * as layout from "../../../core/actions/layout";
 
 import { PageEvent } from "@angular/material";
 import { ActivatedRoute } from "@angular/router";

@@ -1,25 +1,14 @@
-import { LayoutActionTypes, LayoutActions } from '../actions/layout';
+import { LayoutActionTypes, LayoutActions } from "../actions/layout";
 
 export interface State {
   showSidenav: boolean;
+  loading: boolean;
 }
 
 const initialState: State = {
   showSidenav: false,
+  loading: false
 };
-
-var actionDict = {};
-
-function _closeSideNav() {
-  return { showSidenav: false };
-}
-
-function _openSidenav() {
-  return { showSidenav: true };
-}
-
-actionDict[LayoutActionTypes.CloseSidenav] = _closeSideNav;
-actionDict[LayoutActionTypes.OpenSidenav] = _openSidenav;
 
 export function reducer(
   state: State = initialState,
@@ -27,13 +16,31 @@ export function reducer(
 ): State {
   switch (action.type) {
     case LayoutActionTypes.CloseSidenav:
-      return { showSidenav: false };
+      return {
+        ...state,
+        showSidenav: false
+      };
     case LayoutActionTypes.OpenSidenav:
-      return { showSidenav: true };
-
+      return {
+        ...state,
+        showSidenav: true
+      };
+    case LayoutActionTypes.Loading:
+    console.log('LOADING');
+      return {
+        ...state,
+        loading: true
+      };
+    case LayoutActionTypes.LoadingComplete:
+    console.log('STOP LOADING');
+      return {
+        ...state,
+        loading: false
+      };
     default:
       return state;
   }
 }
 
 export const getShowSidenav = (state: State) => state.showSidenav;
+export const isLoading = (state: State) => state.loading;
