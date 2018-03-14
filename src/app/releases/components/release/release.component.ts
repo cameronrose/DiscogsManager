@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import {Release} from '../../models';
+import {Add} from '../../../collection/models/add';
+
 @Component({
   selector: 'dc-release',
   templateUrl: './release.component.html',
@@ -10,6 +12,8 @@ export class ReleaseComponent{
   release: Release;
   @Input()
   loading: boolean;
+  @Output()
+  onAddToCollection: EventEmitter<Add>;
   
   constructor() { }
 }

@@ -12,6 +12,8 @@ import { PageEvent } from "@angular/material";
 import { ActivatedRoute } from "@angular/router";
 import "rxjs/add/operator/map";
 
+import { Add } from "../../../collection/actions/collection";
+
 @Component({
   selector: "dc-detail-page",
   templateUrl: "./detail-page.component.html",
@@ -38,5 +40,9 @@ export class DetailPageComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new search.Load(this._id));
+  }
+
+  addToCollection($event: any) {
+    this.store.dispatch(new Add({ user: $event.user, release_id: $event.releaseId }));
   }
 }

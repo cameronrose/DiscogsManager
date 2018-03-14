@@ -3,7 +3,7 @@
     <dc-nav-item (navigate)="closeSidenav()" routerLink="/releases/find" icon="search">
       Search
     </dc-nav-item>
-    <dc-nav-item (navigate)="closeSidenav()" routerLink="/releases/collection" icon="folder">
+    <dc-nav-item (navigate)="closeSidenav()" routerLink="/collection" icon="folder">
       Collection
     </dc-nav-item>
     <dc-nav-item (navigate)="closeSidenav()" *ngIf="!(loggedIn$ | async)">

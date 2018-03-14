@@ -5,7 +5,7 @@
     <a class="back" routerLink="/releases/find">Go back</a>
   </div>
   <div class="right flex">
-    <button mat-raised-button color="primary">
+    <button mat-raised-button color="primary" (click)="onAddToCollection.emit('VonDWater',release.id)">
       <fa name="plus"></fa>Add to collection</button>
   </div>
 </div>
