@@ -1,11 +1,8 @@
 import { Injectable, InjectionToken, Optional, Inject } from "@angular/core";
 import { Effect, Actions, ofType } from "@ngrx/effects";
 import { Action } from "@ngrx/store";
-import { Observable } from "rxjs/Observable";
-import { Scheduler } from "rxjs/Scheduler";
+import { Observable ,  Scheduler ,  EMPTY as empty ,  of } from "rxjs";
 import { async } from "rxjs/scheduler/async";
-import { empty } from "rxjs/observable/empty";
-import { of } from "rxjs/observable/of";
 
 import { DiscogsService } from "../../core/services/discogs.service";
 import {

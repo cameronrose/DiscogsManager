@@ -1,6 +1,8 @@
+
+import {map} from 'rxjs/operators';
 import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 
 import * as fromRoot from "../../reducers";
 
@@ -32,7 +34,7 @@ export class DetailPageComponent implements OnInit {
       this._id = +params["id"];
     });
 
-    const id: Observable<number> = route.params.map(p => p.id);
+    const id: Observable<number> = route.params.pipe(map(p => p.id));
 
     this.release$ = store.select(fromRoot.getSelectedRelease);
     this.loading$ = store.select(fromRoot.getReleaseLoading);
